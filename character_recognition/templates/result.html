@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PREDICTION Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f0f8ff, #e6e6fa);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #4a90e2;
+            margin-top: 20px;
+            animation: slideIn 1s ease-out;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 20px auto;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            max-width: 600px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        a {
+            display: inline-block;
+            font-size: 1.1em;
+            color: #4a90e2;
+            text-decoration: none;
+            border: 2px solid #4a90e2;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background: #4a90e2;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>RECOGNITION Result</h1>
+    {% if text %}
+        <p>Recognized Text: {{ text }}</p>
+    {% elif error %}
+        <p>Error: {{ error }}</p>
+    {% else %}
+        <p>No text recognized.</p>
+    {% endif %}
+    <a href="{% url 'upload_image' %}">Upload another image</a>
+</body>
+</html>
